@@ -1,0 +1,9 @@
+{
+  "name": "portfolio-studio-swim",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "publish": "node --use-system-ca scripts/publicar.mjs",
+    "test": "node --test scripts/publicar.test.mjs"
+  }
+}
