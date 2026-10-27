@@ -84,7 +84,12 @@ export function renderIndex(projects) {
 }
 
 function command(program,args,root,input,allowFailure=false) {
-  const result=spawnSync(program,args,{cwd:root,input,encoding:'utf8',windowsHide:true,maxBuffer:8*1024*1024});
+  let executable=program;
+  if(process.platform==='win32') {
+    const fallback=program==='gh'?path.join(process.env.ProgramFiles||'C:/Program Files','GitHub CLI','gh.exe'):program==='git'?path.resolve(path.dirname(process.execPath),'../../native/git/cmd/git.exe'):'';
+    if(fallback&&fs.existsSync(fallback))executable=fallback;
+  }
+  const result=spawnSync(executable,args,{cwd:root,input,encoding:'utf8',windowsHide:true,maxBuffer:8*1024*1024});
   if(result.error)throw Error(program+' não está disponível. '+result.error.message);
   if(result.status!==0&&!allowFailure)throw Error((result.stderr||result.stdout||program+' falhou.').trim());
   return result;
