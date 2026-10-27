@@ -148,7 +148,7 @@ async function verify(root,slug,seconds=300) {
   throw Error('Arquivos enviados, mas o endereço ainda não pôde ser verificado. Não trate como publicado. Execute novamente com --verify-only --slug '+slug+'.');
 }
 
-export async function main(argv=process.argv.slice(2)){
+async function run(argv){
   const options={};for(let i=0;i<argv.length;i++){if(!argv[i].startsWith('--'))throw Error('Argumento desconhecido: '+argv[i]);const key=argv[i].slice(2);if(['dry-run','prepare-only','no-wait','verify-only','replace','open'].includes(key))options[key]=true;else{if(!argv[i+1]||argv[i+1].startsWith('--'))throw Error('Falta valor para --'+key);options[key]=argv[++i];}}
   const root=path.resolve(options.repo||defaultRoot);
   if(options['verify-only']){await verify(root,options.slug,Number(options.timeout||300));return;}
@@ -177,5 +177,27 @@ export async function main(argv=process.argv.slice(2)){
   if(options['no-wait']){console.log('ENVIADO, VERIFICAÇÃO PENDENTE: '+result.url);return;}
   await verify(root,plan.slug,Number(options.timeout||300));
   if(options.open&&process.platform==='win32')command('powershell.exe',['-NoProfile','-Command',`Start-Process -FilePath '${result.url}'`],root);
+}
+export async function main(argv=process.argv.slice(2)) {
+  if(argv.includes('--dry-run'))return run(argv);
+  const repoIndex=argv.indexOf('--repo');
+  const root=path.resolve(repoIndex>=0?argv[repoIndex+1]:defaultRoot);
+  const state=path.join(root,'.staging');fs.mkdirSync(state,{recursive:true});
+  const lock=path.join(state,'publish.lock');let handle;
+  try {
+    try { handle=fs.openSync(lock,'wx'); }
+    catch(error) {
+      if(error.code!=='EEXIST')throw error;
+      let stale=false;
+      try {const owner=JSON.parse(fs.readFileSync(lock,'utf8'));if(!Number.isInteger(owner.pid))throw Error('Invalid lock');try{process.kill(owner.pid,0);}catch(probe){if(probe.code==='ESRCH')stale=true;else throw probe;}}
+      catch {throw Error('Outra publicação está em andamento, ou há um lock que precisa de revisão: '+lock);}
+      if(!stale)throw Error('Outra publicação está em andamento. Aguarde a conclusão antes de clicar novamente.');
+      fs.unlinkSync(lock);handle=fs.openSync(lock,'wx');
+    }
+    fs.writeFileSync(handle,JSON.stringify({pid:process.pid,startedAt:new Date().toISOString()}));
+    return await run(argv);
+  } finally {
+    if(handle!==undefined){fs.closeSync(handle);fs.unlinkSync(lock);}
+  }
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))main().catch(error=>{console.error('ERRO: '+error.message);process.exitCode=1;});
