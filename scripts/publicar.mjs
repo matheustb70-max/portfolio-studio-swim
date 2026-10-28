@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {createInterface} from 'node:readline/promises';
+import {applyOverlay} from './portfolio-overlay.mjs';
 
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const extensions = new Set(['.html','.css','.js','.mjs','.json','.webmanifest','.svg','.webp','.png','.jpg','.jpeg','.avif','.gif','.ico','.woff','.woff2','.ttf','.otf','.eot','.mp4','.webm','.ogg','.mp3','.wav','.wasm']);
@@ -111,6 +112,7 @@ export function prepareProject(root, plan, {title,category='Website',cover='',re
   const stagingRoot=path.join(root,'.staging');fs.mkdirSync(stagingRoot,{recursive:true});
   const staging=fs.mkdtempSync(path.join(stagingRoot,plan.slug+'-'));
   for(const file of plan.files){const dest=path.join(staging,file.relative);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.copyFileSync(file.absolute,dest);}
+  if(config.overlay)applyOverlay(staging,root);
   // Preserve a recoverable local copy of a replaced project; never touch siblings.
   if(fs.existsSync(target))fs.renameSync(target,path.join(stagingRoot,plan.slug+'-backup-'+Date.now()));
   fs.renameSync(staging,target);

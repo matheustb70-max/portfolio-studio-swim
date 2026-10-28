@@ -3,5 +3,6 @@
   "repository": "portfolio-studio-swim",
   "domain": "portfolio.estudioswim.com.br",
   "branch": "main",
-  "directory": "docs"
+  "directory": "docs",
+  "overlay": true
 }

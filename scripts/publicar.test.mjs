@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {planProject,prepareProject,validateSlug} from './publicar.mjs';
+import {applyOverlay} from './portfolio-overlay.mjs';
 
 function fixture(){
  const base=fs.mkdtempSync(path.join(os.tmpdir(),'swim-publish-test-'));
@@ -44,4 +45,16 @@ test('republicar exige replace e preserva projetos irmãos',()=>{
  assert.equal(fs.readFileSync(path.join(repo,'docs','irmao','index.html'),'utf8'),'Não alterar');
  assert.match(fs.readFileSync(path.join(repo,'docs','teste','index.html'),'utf8'),/Atualizado/);
  assert.equal(JSON.parse(fs.readFileSync(path.join(repo,'docs','projects.json'))).length,1);
+});
+test('convite da SWIM não duplica e preserva outros diálogos da página',()=>{
+ const {source}=fixture();
+ fs.writeFileSync(path.join(source,'index.html'),'<html><body><h1>Projeto</h1><dialog id="consulta">Contato do médico</dialog></body></html>');
+ applyOverlay(source);applyOverlay(source);
+ const html=fs.readFileSync(path.join(source,'index.html'),'utf8');
+ assert.equal([...html.matchAll(/id="swim-return-dialog"/g)].length,1);
+ assert.equal([...html.matchAll(/src="swim-portfolio\.js/g)].length,1);
+ assert.match(html,/<dialog id="consulta">Contato do médico<\/dialog>/);
+ assert.match(html,/Entrar em contato com a SWIM pelo WhatsApp/);
+ assert.match(html,/https:\/\/wa\.me\/5548991415070/);
+ assert.ok(fs.existsSync(path.join(source,'assets','swim-logo.svg')));
 });

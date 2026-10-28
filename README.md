@@ -10,6 +10,8 @@ Dê dois cliques em `PUBLICAR-NO-PORTFOLIO.cmd`, ou arraste a pasta estática pr
 
 O script copia o projeto, atualiza a galeria, faz commit e push e confere o endereço HTTPS e os arquivos publicados. Uma publicação só é anunciada como concluída após a conferência. Caminhos existentes exigem `--replace`, evitando sobrescrever outro projeto por engano.
 
+O publicador também aplica o convite da SWIM ao chegar ao fim da página. O padrão visual fica em `templates/swim-overlay/`: botão para a página inicial do estúdio e link sublinhado para o WhatsApp oficial da SWIM. A aplicação preserva outros diálogos da página e evita duplicar o convite em atualizações.
+
 ## Linha de comando
 
 ```powershell
