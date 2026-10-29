@@ -1,0 +1,155 @@
+/* Eucalyptus accents on neutral surfaces; soft green is retained on team cards. */
+:root {
+  --paper: #f7f7f7;
+  --ink: #29372f;
+  --muted: #68746c;
+  --line: #dedede;
+  --eucalyptus: #7e9c90;
+  --accent: #537465;
+  --accent-text: #476758;
+  --accent-heading: #718d80;
+  --sage-soft: #efefef;
+  --forest: #2e483c;
+}
+
+::selection { background: #d4e3d7; color: #233b2d; }
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline-color: var(--accent); }
+.skip-link { background: var(--forest); }
+h2 > span, .hero h1 span { color: var(--accent-heading); }
+.eyebrow { color: #5b7163; }
+.section-index { color: var(--accent-text); border-color: #c5d5ca; }
+.text-link { color: var(--accent-text); border-color: #b9cdbf; }
+.text-link:hover { color: #2c513d; }
+.text-link svg, .outline > svg { color: var(--accent); }
+.outline { border-color: #bdcfc3; }
+.outline:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.outline:hover > svg { color: #fff; }
+.button-shell {
+  background: linear-gradient(135deg, #f6faf5, #cfddd2 45%, #f0f5ee);
+  box-shadow: inset 1px 1px 1px #fff, inset -1px -1px 2px #fff, 0 8px 20px #42644b12;
+}
+.primary {
+  color: #10291e;
+  background: linear-gradient(120deg, #8eab9c, var(--eucalyptus) 65%, #809f91);
+  border-color: #8eac9b;
+}
+.primary:hover { background: #729584; color: #10291e; box-shadow: inset 0 0 0 1px #b4cbbb; }
+.arrow-circle { background: #f7fbf5; color: var(--accent-text); }
+.pulse:after { border-color: #7e9c9066; }
+.glass-frame {
+  border-color: #e1e1e1;
+  background: linear-gradient(135deg, #fefefe 0%, #e1e1e1 45%, #f1f1f1 75%, #fafafa 100%);
+  box-shadow: inset 1px 1px 1px #fffffffa, inset -1px -1px 2px #fff, 0 9px 24px #0000000b;
+}
+
+.header { background: #f7f7f7d9; }
+.nav > a:hover, .nav > a.active { color: var(--accent-text); }
+.nav > a:after, .scroll-progress { background: var(--eucalyptus); }
+.header-contact { border-color: #d5d5d5; background: linear-gradient(120deg, #fff9, #e8e8e87a); }
+.header-contact svg { color: var(--accent); }
+.header-contact:hover { background: var(--accent); color: #fff; }
+.header-contact:hover svg { color: #fff; }
+.menu-toggle span { background: var(--forest); }
+.hero {
+  background: radial-gradient(ellipse at 80% 46%, #e5e5e577, transparent 43%), linear-gradient(180deg, #f7f7f7, #f2f2f2 65%, #f7f7f7);
+}
+.hero .eyebrow.pill { background: #ffffff3d; border-color: #d7d7d7; color: #5e7266; }
+.status-dot { background: var(--eucalyptus); box-shadow: 0 0 0 3px #7e9c9014; }
+.hero-description { color: #68766b; }
+.hero-note { color: #5e7162; }
+.hero-halo { background: radial-gradient(ellipse at 55% 80%, #c9c9c938, transparent 62%); }
+.orbital span, .orbital-hero span, .orbital-cta span { border-color: #7e9c904a; }
+.orbital-hero span { border-right-color: #7e9c9073; }
+.hero-photo { filter: saturate(.85); }
+.hero-visual:hover .hero-photo { filter: saturate(1); }
+.location-badge { background: #f8f8f8eb; border-color: #fff; }
+.location-badge svg { color: var(--accent); }
+.hero-bottom { color: #5f7463; }
+.hero-bottom > a { color: var(--accent); border-color: #c8d8c9; }
+
+.about-photo img { filter: saturate(.9); }
+.image-tag { background: #f8f8f8ed; }
+.image-tag svg { color: var(--accent); }
+.values-bar { border-color: #dedede; background: #ffffff70; box-shadow: inset 1px 1px 1px #fff; }
+.values-bar > div { background: #ffffff80; color: var(--ink); border: 1px solid #dedede; }
+.values-bar svg { color: var(--accent); }
+.specialties { background: #f0f0f0; }
+.specialty-item { background: linear-gradient(120deg, #f3f3f3, #dfdfdf, #fafafa); border-color: #dedede; }
+.specialty-number { background: var(--eucalyptus); color: #122c20; }
+.specialty-body { background: #fff; color: var(--ink); }
+.specialty-body .accordion-trigger small { color: #627569; }
+.specialty-body .accordion-trigger > svg { color: var(--accent); }
+.specialty-body .accordion-content { color: #405c4a; }
+.specialty-item.open .specialty-body { background: #fff; }
+.specialty-item:hover { box-shadow: inset 1px 1px 1px #fff, inset -1px -1px 2px #fff, 0 8px 20px #00000012; }
+
+.dark-section { background: #efefef; color: var(--ink); }
+.dark-section h2 > span { color: #62826e; }
+.dark-section .eyebrow { color: #54715d; }
+.dark-section .section-index { border-color: #bccfbd; color: var(--accent-text); }
+.dark-section p { color: #5d7262; }
+.section-notch { background: #f0f0f0; color: var(--accent); }
+.step { border-color: #d7d7d7; background: linear-gradient(150deg, #fff, #f6f6f6 70%); }
+.step:hover { background: #fff; }
+.step-top > span { color: #587660; }
+.step-top svg { color: var(--accent); }
+.step:before { background: var(--eucalyptus); box-shadow: 0 0 0 4px #efefef; }
+.experience > .wrap > .text-link { color: var(--accent-text); border-color: #a9c1ad; }
+.experience > .wrap > .text-link:hover { color: #294f37; }
+
+.bio-photo > img { filter: saturate(.85); }
+.formation { border-color: var(--line); }
+.formation > .small-label { color: var(--accent-text); }
+.team-card { background: #f1f5ec; border-color: #d5e0d2; }
+.team-image img { filter: saturate(.85); }
+.team-card:hover img { filter: saturate(1); }
+.team-card-copy > span { color: #657963; }
+.carousel-controls > button { color: var(--accent); border-color: #b9cdba; }
+.carousel-controls > button:not(:disabled):hover { color: #fff; background: var(--accent); }
+.treatments { background: #efefef; }
+.treatment-image { background: #e4e4e4; }
+.treatment-image img { filter: saturate(.8); }
+.treatment-card:hover .treatment-image img { filter: saturate(1); }
+.treatment-copy .accordion-trigger { color: var(--accent-text); }
+.accordion-trigger > svg { color: var(--accent); }
+.accordion-content a { color: var(--accent-text); }
+
+.photo-carousel img { filter: saturate(.9); }
+.gallery-dots button { background: #bbcebb; }
+.gallery-dots button[aria-current=true] { background: var(--accent); }
+.map-block iframe { filter: saturate(.75); background: #e8e8e8; }
+.map-address > span > svg { color: var(--accent); }
+.map-address > a { color: var(--accent); border-color: #b9ceba; }
+.map-address > a:hover { background: var(--accent); }
+.clinic-contact svg { color: var(--accent); }
+.articles { background: #f1f1f1; }
+.article-card { border-color: #dedede; background: #fff; }
+.article-card > a > img { filter: saturate(.8); }
+.article-card:hover img { filter: saturate(1); }
+.faq-list .accordion-item { background: #fff; border-color: #dedede; }
+.faq-list .accordion-trigger:hover { background: #f5f5f5; }
+.faq-list .accordion-content { color: #5c7060; }
+.final-cta { background: radial-gradient(ellipse at 50% 80%, #d6d6d688, transparent 65%), #f0f0f0; }
+.cta-phone { color: var(--accent-text); }
+
+.footer { background: #111; color: #eee; }
+.footer .brand > span { color: #ddd; }
+.footer-top { border-color: #3b3b3b; }
+.footer-top > p { color: #d3d3d3; }
+.back-top { color: #ddd; border-color: #777; }
+.back-top:hover { background: #303030; }
+.footer-main .small-label { color: #bdbdbd; }
+.footer-main address, .footer-main a { color: #e0e0e0; }
+.footer-main a:hover { color: #fff; }
+.footer-bottom { border-color: #3b3b3b; }
+.footer-bottom p { color: #c6c6c6; }
+.site-credit { padding: 22px 0 28px; border-top: 1px solid #333; text-align: center; }
+.site-credit p { color: #c6c6c6; font-size: 12px; line-height: 1.8; }
+.site-credit strong { color: #f3f3f3; font-weight: 500; }
+.site-credit p + p { margin-top: 5px; color: #aaa; font-size: 11px; }
+
+@media(max-width:900px) {
+  .nav { background: #f9f9f9f7; }
+  .nav > a { border-bottom-color: #dedede; }
+  .nav .mobile-contact { background: var(--accent); color: #fff; }
+}
