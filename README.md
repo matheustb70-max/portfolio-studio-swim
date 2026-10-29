@@ -10,7 +10,11 @@ Dê dois cliques em `PUBLICAR-NO-PORTFOLIO.cmd`, ou arraste a pasta estática pr
 
 O script copia o projeto, atualiza a galeria, faz commit e push e confere o endereço HTTPS e os arquivos publicados. Uma publicação só é anunciada como concluída após a conferência. Caminhos existentes exigem `--replace`, evitando sobrescrever outro projeto por engano.
 
-O publicador também aplica o convite da SWIM ao chegar ao fim da página. O padrão visual fica em `templates/swim-overlay/`: botão para a página inicial do estúdio e link sublinhado para o WhatsApp oficial da SWIM. A aplicação preserva outros diálogos da página e evita duplicar o convite em atualizações.
+O convite da SWIM é padrão para cada nova publicação e atualização (`overlay: true` em `portfolio.config.json`). O template central fica em `templates/swim-overlay/`; alterações nesse padrão devem ser feitas ali. A aplicação preserva outros diálogos da página e evita duplicar o convite em atualizações.
+
+Ao chegar ao fim da página, o pop-up aparece uma vez por carregamento, com a marca oficial e o título “Vamos criar o seu próximo site?”. O botão “Voltar para a página inicial” abre https://estudioswim.com.br/. Abaixo dele, o link sublinhado “Entrar em contato com a SWIM pelo WhatsApp” abre o contato da agência, https://wa.me/5548991415070, com a mensagem do template. Os contatos do cliente continuam próprios do projeto.
+
+Na entrega de uma página nova ou após mudanças no template, conferir o pop-up no desktop e no celular, incluindo o fechamento pelo botão, Escape e clique fora. Entregar sempre o endereço HTTPS, com certificado válido, HTTPS obrigatório no Pages e redirecionamento de HTTP para HTTPS. Não concluir uma publicação enquanto o certificado estiver pendente.
 
 ## Linha de comando
 
