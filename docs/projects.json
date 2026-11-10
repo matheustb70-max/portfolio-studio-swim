@@ -19,5 +19,12 @@
     "category": "Psiquiatria",
     "cover": "assets/clinica-sala-1200.webp",
     "updatedAt": "2026-10-29T14:09:53.727Z"
+  },
+  {
+    "slug": "clinica-mimo",
+    "title": "Clínica Mimo",
+    "category": "Pediatria",
+    "cover": "assets/hero-desktop.png",
+    "updatedAt": "2026-11-10T23:11:37.988Z"
   }
 ]
