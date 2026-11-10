@@ -8,7 +8,7 @@ Cada projeto é publicado em `/<caminho>/`. O site principal e os e-mails do dom
 
 Dê dois cliques em `PUBLICAR-NO-PORTFOLIO.cmd`, ou arraste a pasta estática pronta sobre esse arquivo. Informe a pasta, o caminho e o nome quando solicitado. A pasta precisa conter `index.html`; use a saída pública `dist` ou `out`, sem arquivos internos.
 
-O script copia o projeto, atualiza a galeria, faz commit e push e confere o endereço HTTPS e os arquivos publicados. Uma publicação só é anunciada como concluída após a conferência. Caminhos existentes exigem `--replace`, evitando sobrescrever outro projeto por engano.
+O script copia o projeto, atualiza o catálogo em `docs/projects.json`, faz commit e push e confere o endereço HTTPS e os arquivos publicados. Uma publicação só é anunciada como concluída após a conferência. Caminhos existentes exigem `--replace`, evitando sobrescrever outro projeto por engano.
 
 O convite da SWIM é padrão para cada nova publicação e atualização (`overlay: true` em `portfolio.config.json`). O template central fica em `templates/swim-overlay/`; alterações nesse padrão devem ser feitas ali. A aplicação preserva outros diálogos da página e evita duplicar o convite em atualizações.
 

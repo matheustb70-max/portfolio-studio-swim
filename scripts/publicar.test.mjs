@@ -14,6 +14,7 @@ function fixture(){
  fs.writeFileSync(path.join(source,'foto.svg'),'<svg xmlns="http://www.w3.org/2000/svg"/>');
  fs.writeFileSync(path.join(repo,'portfolio.config.json'),JSON.stringify({directory:'docs',domain:'portfolio.estudioswim.com.br'}));
  fs.writeFileSync(path.join(repo,'docs/projects.json'),'[]');
+ fs.copyFileSync(new URL('../docs/index.html',import.meta.url),path.join(repo,'docs/index.html'));
  return {base,source,repo};
 }
 test('caminhos maliciosos e reservados são recusados',()=>{
@@ -36,6 +37,8 @@ test('credenciais e caminhos de asset incompatíveis bloqueiam a publicação',(
 });
 test('republicar exige replace e preserva projetos irmãos',()=>{
  const {source,repo}=fixture();
+ const indexPath=path.join(repo,'docs/index.html');
+ const redirect=fs.readFileSync(indexPath,'utf8');
  const plan=planProject(source,'teste');
  prepareProject(repo,plan,{title:'Teste',cover:'foto.svg'});
  fs.mkdirSync(path.join(repo,'docs','irmao'));fs.writeFileSync(path.join(repo,'docs','irmao','index.html'),'Não alterar');
@@ -45,6 +48,7 @@ test('republicar exige replace e preserva projetos irmãos',()=>{
  assert.equal(fs.readFileSync(path.join(repo,'docs','irmao','index.html'),'utf8'),'Não alterar');
  assert.match(fs.readFileSync(path.join(repo,'docs','teste','index.html'),'utf8'),/Atualizado/);
  assert.equal(JSON.parse(fs.readFileSync(path.join(repo,'docs','projects.json'))).length,1);
+ assert.equal(fs.readFileSync(indexPath,'utf8'),redirect);
 });
 test('convite da SWIM não duplica e preserva outros diálogos da página',()=>{
  const {source}=fixture();

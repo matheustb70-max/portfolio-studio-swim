@@ -9,7 +9,6 @@ import {applyOverlay} from './portfolio-overlay.mjs';
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const extensions = new Set(['.html','.css','.js','.mjs','.json','.webmanifest','.svg','.webp','.png','.jpg','.jpeg','.avif','.gif','.ico','.woff','.woff2','.ttf','.otf','.eot','.mp4','.webm','.ogg','.mp3','.wav','.wasm']);
 const reserved = new Set(['assets','scripts','docs','index','404','projects','api']);
-const escapeHtml = value => String(value).replace(/[&<>"']/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
 const sleep = milliseconds => new Promise(resolve => setTimeout(resolve, milliseconds));
 
 export function validateSlug(slug) {
@@ -79,11 +78,6 @@ export function planProject(source, slug) {
   return {root,slug,files,totalBytes:files.reduce((sum,file)=>sum+file.bytes,0)};
 }
 
-export function renderIndex(projects) {
-  const cards=projects.map(project=>`<a class="card" href="./${escapeHtml(project.slug)}/">${project.cover?`<img src="./${escapeHtml(project.slug)}/${escapeHtml(project.cover)}" alt="Página de ${escapeHtml(project.title)}" loading="lazy" width="1200" height="670">`:'<div class="cover">SWIM<span>Web design</span></div>'}<div class="card-copy"><span>${escapeHtml(project.category||'Website')}</span><h2>${escapeHtml(project.title)}</h2><p>Acessar projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></p></div></a>`).join('');
-  return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Portfólio de sites da Studio Swim. Conheça os projetos e navegue por cada página."><title>Portfólio de sites — Studio Swim</title><style>*{box-sizing:border-box}body{margin:0;background:#f5f5f1;color:#222b27;font:16px/1.6 system-ui,sans-serif}a{color:inherit;text-decoration:none}header,main,footer{width:min(1200px,calc(100% - 48px));margin:auto}header{height:90px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #d5dbd4}.brand{font-size:31px;letter-spacing:-2px;font-weight:850}.brand small{font-size:10px;letter-spacing:2px;margin-left:14px;font-weight:500}header>a:last-child{font-size:12px}main{padding:72px 0 80px}.eyebrow{font-size:11px;letter-spacing:2px;color:#677366}h1{font-size:clamp(43px,7vw,85px);letter-spacing:-5px;font-weight:500;line-height:1.05;margin:20px 0}main>p{color:#667065;max-width:500px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:55px}.card{background:#fff;border-radius:18px;overflow:hidden;border:1px solid #dde2d9;transition:transform .25s,box-shadow .25s}.card:hover{transform:translateY(-5px);box-shadow:0 12px 35px #2233220d}.card img,.cover{width:100%;aspect-ratio:16/10;object-fit:cover}.card-copy{padding:25px}.card-copy>span{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#6c7765}h2{font-size:23px;font-weight:500;letter-spacing:-.6px;line-height:1.3;margin:12px 0 26px}.card-copy p{font-size:12px;display:flex;align-items:center;justify-content:space-between}.card-copy svg{width:22px;height:22px}.cover{background:#dce8d4;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:42px;font-weight:700;letter-spacing:-3px}.cover span{font-size:12px;letter-spacing:1px;font-weight:400}footer{padding:25px 0;border-top:1px solid #d5dbd4;display:flex;justify-content:space-between;font-size:11px;color:#687364}a:focus-visible{outline:3px solid #657a49;outline-offset:5px}@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){header,main,footer{width:calc(100% - 36px)}header{height:74px}.brand small{display:none}main{padding-top:48px}h1{letter-spacing:-2.5px}.grid{grid-template-columns:1fr;gap:18px;margin-top:35px}footer{gap:20px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}</style></head><body><header><a class="brand" href="./">SWIM<small>ESTÚDIO CRIATIVO</small></a><a href="https://estudioswim.com.br/">Conheça o estúdio ↗</a></header><main><div class="eyebrow">PRESENÇA DIGITAL · STUDIO SWIM</div><h1>Portfólio de sites.</h1><p>Uma seleção de páginas criadas pela Studio Swim. Explore os projetos e conheça cada experiência.</p><div class="grid">${cards}</div></main><footer><span>© ${new Date().getFullYear()} Studio Swim</span><a href="https://estudioswim.com.br/">estudioswim.com.br</a></footer></body></html>`;
-}
-
 function command(program,args,root,input,allowFailure=false) {
   let executable=program;
   if(process.platform==='win32') {
@@ -119,7 +113,6 @@ export function prepareProject(root, plan, {title,category='Website',cover='',re
   const entry={slug:plan.slug,title,category,cover,updatedAt:new Date().toISOString()};
   if(existing)projects[projects.indexOf(existing)]=entry;else projects.push(entry);
   fs.writeFileSync(manifestPath,JSON.stringify(projects,null,2)+'\n');
-  fs.writeFileSync(path.join(output,'index.html'),renderIndex(projects));
   fs.writeFileSync(path.join(output,'CNAME'),config.domain+'\n');
   fs.writeFileSync(path.join(output,'.nojekyll'),'');
   return {config,url:'https://'+config.domain+'/'+plan.slug+'/'};
