@@ -26,5 +26,12 @@
     "category": "Pediatria",
     "cover": "assets/hero-desktop.png",
     "updatedAt": "2026-11-10T23:11:37.988Z"
+  },
+  {
+    "slug": "dra-gi",
+    "title": "Dra. Gi — Medicina de Família",
+    "category": "Medicina de Família",
+    "cover": "assets/hero-1920.webp",
+    "updatedAt": "2026-11-11T19:09:20.292Z"
   }
 ]
