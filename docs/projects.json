@@ -33,5 +33,12 @@
     "category": "Medicina de Família",
     "cover": "assets/hero-1920.webp",
     "updatedAt": "2026-11-11T19:09:20.292Z"
+  },
+  {
+    "slug": "gelson-silva",
+    "title": "Gelson Silva — Psicologia",
+    "category": "Psicologia",
+    "cover": "assets/gelson-hero-800.webp",
+    "updatedAt": "2026-11-12T18:59:39.431Z"
   }
 ]
