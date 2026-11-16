@@ -13,8 +13,9 @@ export function applyAnalytics(target, templateRoot = root) {
       else if (entry.name.endsWith('.html')) {
         let html = fs.readFileSync(file, 'utf8');
         if (!/<\/head\s*>/i.test(html)) continue;
-        html = html.replace(/<script\b[^>]*src=["'][^"']*swim-analytics\.js[^"']*["'][^>]*>\s*<\/script>/gi, '');
         const relative = path.relative(directory, path.join(target, asset)).split(path.sep).join('/');
+        if (html.includes(`<script src="${relative}" defer></script>`)) continue;
+        html = html.replace(/<script\b[^>]*src=["'][^"']*swim-analytics\.js[^"']*["'][^>]*>\s*<\/script>/gi, '');
         html = html.replace(/<\/head\s*>/i, `<script src="${relative}" defer></script>\n</head>`);
         fs.writeFileSync(file, html);
       }
