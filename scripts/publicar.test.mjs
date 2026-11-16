@@ -5,11 +5,14 @@ import os from 'node:os';
 import path from 'node:path';
 import {planProject,prepareProject,validateSlug} from './publicar.mjs';
 import {applyOverlay} from './portfolio-overlay.mjs';
+import {applyAnalytics} from './portfolio-analytics.mjs';
 
 function fixture(){
  const base=fs.mkdtempSync(path.join(os.tmpdir(),'swim-publish-test-'));
  const source=path.join(base,'source'),repo=path.join(base,'repo');
  fs.mkdirSync(source);fs.mkdirSync(path.join(repo,'docs'),{recursive:true});
+ fs.mkdirSync(path.join(repo,'templates'));
+ fs.copyFileSync(new URL('../templates/swim-analytics.js',import.meta.url),path.join(repo,'templates/swim-analytics.js'));
  fs.writeFileSync(path.join(source,'index.html'),'<h1>Teste</h1><img src="foto.svg">');
  fs.writeFileSync(path.join(source,'foto.svg'),'<svg xmlns="http://www.w3.org/2000/svg"/>');
  fs.writeFileSync(path.join(repo,'portfolio.config.json'),JSON.stringify({directory:'docs',domain:'portfolio.estudioswim.com.br'}));
@@ -20,6 +23,17 @@ function fixture(){
 test('caminhos maliciosos e reservados são recusados',()=>{
  for(const slug of ['../outro','a/b','docs','assets','Projeto','a--b'])assert.throws(()=>validateSlug(slug));
  assert.equal(validateSlug('drarafaeloliveirapsiquiatria'),'drarafaeloliveirapsiquiatria');
+});
+
+test('analytics não duplica e resolve páginas internas',()=>{
+ const {source}=fixture();
+ fs.mkdirSync(path.join(source,'interna'));
+ fs.writeFileSync(path.join(source,'index.html'),'<html><head></head><body>Site</body></html>');
+ fs.writeFileSync(path.join(source,'interna/index.html'),'<html><head></head><body>Interna</body></html>');
+ applyAnalytics(source);applyAnalytics(source);
+ const html=fs.readFileSync(path.join(source,'index.html'),'utf8');
+ assert.equal([...html.matchAll(/src="swim-analytics.js"/g)].length,1);
+ assert.match(fs.readFileSync(path.join(source,'interna/index.html'),'utf8'),/src="..\/swim-analytics.js"/);
 });
 test('somente saída pública é incluída, sem env, documentos ou Git',()=>{
  const {source}=fixture();
