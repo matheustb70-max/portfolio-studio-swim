@@ -61,5 +61,12 @@
     "category": "Links de envio",
     "cover": "",
     "updatedAt": "2026-11-17T19:43:45.411Z"
+  },
+  {
+    "slug": "diagnostico-kr-odontologia",
+    "title": "KR Odontologia — Diagnóstico digital",
+    "category": "Diagnósticos",
+    "cover": "assets/capa.webp",
+    "updatedAt": "2026-11-17T21:10:30.106Z"
   }
 ]
