@@ -54,5 +54,12 @@
     "category": "Diagnósticos",
     "cover": "assets/capa.jpg",
     "updatedAt": "2026-11-17T18:23:18.835Z"
+  },
+  {
+    "slug": "mimo",
+    "title": "Clínica Mimo — Link de envio do diagnóstico",
+    "category": "Links de envio",
+    "cover": "",
+    "updatedAt": "2026-11-17T19:43:45.411Z"
   }
 ]
