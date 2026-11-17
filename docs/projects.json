@@ -82,5 +82,12 @@
     "category": "Links de envio",
     "cover": "",
     "updatedAt": "2026-11-17T21:13:37.103Z"
+  },
+  {
+    "slug": "kr-odontologia",
+    "title": "KR Odontologia",
+    "category": "Odontologia",
+    "cover": "assets/hero-equipe.webp",
+    "updatedAt": "2026-11-17T22:25:04.622Z"
   }
 ]

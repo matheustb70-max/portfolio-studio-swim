@@ -1,0 +1,11 @@
+/* Mantém a tipografia do projeto no convite padrão incluído pelo portfólio. */
+html body #swim-return-dialog,
+html body #swim-return-dialog h2,
+html body #swim-return-dialog h2 span,
+html body #swim-return-dialog p,
+html body #swim-return-dialog a,
+html body #swim-return-dialog button{font-family:'Britti Sans',sans-serif}
+html body #swim-return-dialog h2{font-size:32px;font-weight:600;letter-spacing:-.01em}
+html body #swim-return-dialog #swim-return-description{font-size:16px;font-weight:400}
+html body #swim-return-dialog .swim-return-primary,
+html body #swim-return-dialog .swim-return-secondary{font-size:18px;font-weight:400}
