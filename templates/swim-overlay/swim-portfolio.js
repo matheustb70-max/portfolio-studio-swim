@@ -4,10 +4,14 @@
   if (!popup) return;
   const close = popup.querySelector('.swim-return-close');
   const root = document.documentElement;
+  const presentation = document.querySelector('[data-swim-presentation]');
   let shown = false, scheduled = false, lastFocus = null, previousOverflow = '';
   function check() {
     scheduled = false;
-    if (shown || scrollY < 100 || root.scrollHeight - innerHeight - scrollY > 48 || document.querySelector('dialog[open]')) return;
+    if (shown || document.querySelector('dialog[open]')) return;
+    if (presentation) {
+      if (!presentation.querySelector('.slide:last-of-type.is-active')) return;
+    } else if (scrollY < 100 || root.scrollHeight - innerHeight - scrollY > 48) return;
     shown = true;
     lastFocus = document.activeElement;
     previousOverflow = root.style.overflow;
@@ -28,4 +32,6 @@
     if (lastFocus instanceof HTMLElement) lastFocus.focus({ preventScroll: true });
   });
   addEventListener('scroll', onScroll, { passive: true });
+  // A apresentação conclui pelo seu CTA; telas intermediárias não são o fim do projeto.
+  if (presentation) addEventListener('swim:presentation-finish', () => { shown = false; check(); });
 })();
