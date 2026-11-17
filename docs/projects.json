@@ -47,5 +47,12 @@
     "category": "Diagnósticos",
     "cover": "assets/capa.png",
     "updatedAt": "2026-11-17T17:02:28.566Z"
+  },
+  {
+    "slug": "diagnostico-comercial-clinica-mimo",
+    "title": "Diagnóstico Comercial — Clínica Mimo",
+    "category": "Diagnósticos",
+    "cover": "assets/capa.jpg",
+    "updatedAt": "2026-11-17T18:23:18.835Z"
   }
 ]
