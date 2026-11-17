@@ -68,5 +68,12 @@
     "category": "Diagnósticos",
     "cover": "assets/capa.webp",
     "updatedAt": "2026-11-17T21:10:30.106Z"
+  },
+  {
+    "slug": "diagnostico-comercial-kr-odontologia",
+    "title": "Diagnóstico Comercial — KR Odontologia",
+    "category": "Diagnósticos",
+    "cover": "assets/capa.webp",
+    "updatedAt": "2026-11-17T21:11:32.631Z"
   }
 ]
