@@ -145,5 +145,12 @@
     "category": "Diagnósticos",
     "cover": "assets/capa.jpg",
     "updatedAt": "2026-11-18T18:35:42.054Z"
+  },
+  {
+    "slug": "ver-cruz",
+    "title": "Clínica Cruz — Link de envio do diagnóstico",
+    "category": "Links de envio",
+    "cover": "",
+    "updatedAt": "2026-11-18T18:38:34.886Z"
   }
 ]
