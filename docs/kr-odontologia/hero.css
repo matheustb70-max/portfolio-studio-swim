@@ -93,9 +93,19 @@
 .hero.hero-figma+.trust-strip{padding-top:40px}
 .contact-float.contact-float--hero-hidden{display:none}
 @media(max-width:599px){
-  .hero.hero-figma .hero-copy{display:flex;flex-direction:column;padding-block:28px}
+  .hero.hero-figma .hero-copy{display:flex;flex-direction:column;padding-block:28px;container-type:inline-size}
   .hero.hero-figma .eyebrow{order:0}
-  .hero.hero-figma h1{order:1}
+  .hero.hero-figma h1{
+    order:1;
+    font-size:clamp(16px,calc((100vw - 114px) * .112),64px);
+    text-wrap:initial;
+    white-space:nowrap;
+  }
+  .hero.hero-figma .hero-title-break{display:block}
+  .hero.hero-figma .hero-title-space{display:none}
+  @supports (font-size:1cqw){
+    .hero.hero-figma h1{font-size:clamp(16px,min(10.25vw,11.2cqw),64px)}
+  }
   .hero.hero-figma .hero-lead{order:2}
   .hero.hero-figma .hero-actions{order:3}
   .hero.hero-figma .hero-description{order:4;margin-top:24px}
