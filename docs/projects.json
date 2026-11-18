@@ -138,5 +138,12 @@
     "category": "Diagnósticos",
     "cover": "assets/capa.jpg",
     "updatedAt": "2026-11-18T18:30:03.419Z"
+  },
+  {
+    "slug": "diagnostico-clinica-cruz",
+    "title": "Clínica Cruz — Diagnóstico digital",
+    "category": "Diagnósticos",
+    "cover": "assets/capa.jpg",
+    "updatedAt": "2026-11-18T18:35:42.054Z"
   }
 ]
