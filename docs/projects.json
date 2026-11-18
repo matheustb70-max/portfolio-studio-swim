@@ -96,5 +96,12 @@
     "category": "Diagnósticos",
     "cover": "assets/capa.webp",
     "updatedAt": "2026-11-18T02:30:30.757Z"
+  },
+  {
+    "slug": "diagnostico-deise-ferreira",
+    "title": "Clínica Dra. Deise Ferreira — Diagnóstico digital",
+    "category": "Diagnósticos",
+    "cover": "assets/capa.webp",
+    "updatedAt": "2026-11-18T02:31:12.514Z"
   }
 ]
