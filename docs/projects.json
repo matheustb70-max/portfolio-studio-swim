@@ -110,5 +110,12 @@
     "category": "Links de envio",
     "cover": "",
     "updatedAt": "2026-11-18T02:32:19.712Z"
+  },
+  {
+    "slug": "diagnostico-umnio",
+    "title": "Diagnóstico — Umnio",
+    "category": "Diagnóstico",
+    "cover": "assets/capa.webp",
+    "updatedAt": "2026-11-18T02:34:14.976Z"
   }
 ]
