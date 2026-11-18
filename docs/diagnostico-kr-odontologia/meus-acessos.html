@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light">
+  <title>Excluir meus acessos — SWIM</title>
+  <script>
+    window.swimExclusionSaved = false;
+    try {
+      localStorage.setItem('swim-analytics-opt-out', 'true');
+      window.swimExclusionSaved = localStorage.getItem('swim-analytics-opt-out') === 'true';
+    } catch {}
+    // This settings page never starts the collector, even if storage is blocked.
+    window.swimAnalyticsInstalled = true;
+  </script>
+  <style>
+    @font-face{font-family:'DM Sans';src:url('assets/dm-sans-400.ttf') format('truetype');font-weight:400;font-display:swap}
+    @font-face{font-family:'DM Sans';src:url('assets/dm-sans-500.ttf') format('truetype');font-weight:500;font-display:swap}
+    :root{font-family:'DM Sans',sans-serif;color:#0b0b0d;background:#fdfcfe;color-scheme:light}*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:28px;background:radial-gradient(ellipse at 85% 12%,#f6e7f6,transparent 55%),#fdfcfe}main{width:100%;max-width:650px;padding:clamp(26px,6vw,58px);border:1px solid #e5e3e9;border-radius:20px;background:#fdfcfe}img{width:135px;height:auto;display:block;margin-bottom:45px}.eyebrow{font-size:11px;letter-spacing:.12em;color:#696871;margin:0 0 18px}h1{font-size:clamp(30px,5vw,43px);font-weight:500;line-height:1.12;letter-spacing:-.04em;margin:0 0 22px;text-wrap:balance}p{font-size:17px;line-height:1.65;color:#696871;margin:0 0 18px}.state{border-block:1px solid #e5e3e9;padding:20px 0;margin:27px 0;color:#a62286;font-size:16px}.detail{font-size:14px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 22px;background:#0b0b0d;color:#fff;border-radius:50px;text-decoration:none;font-size:14px;margin:10px 0 22px}.button:focus-visible{outline:3px solid #a62286;outline-offset:4px}.fine{font-size:12px;margin-bottom:0}.button:hover{background:#a62286}@media(max-width:450px){body{padding:16px}main{padding:28px 24px}img{margin-bottom:32px}p{font-size:16px}}
+  </style>
+<script src="swim-analytics.js" defer></script>
+</head>
+<body>
+<main>
+  <img src="assets/swim-logo.svg" alt="Estúdio SWIM" width="135" height="50">
+  <p class="eyebrow">SEUS ACESSOS AO PORTFÓLIO</p>
+  <h1 id="title">Ativando a exclusão deste navegador…</h1>
+  <p id="summary">Conferindo se a preferência pode ser salva neste navegador.</p>
+  <p class="state" id="status" role="status" aria-live="polite">Verificando…</p>
+  <p class="detail">Vale para todas as páginas de <strong>portfolio.estudioswim.com.br</strong> abertas neste perfil de navegador, inclusive pelos links com UTM.</p>
+  <p class="detail">No celular ou em outro navegador, abra este mesmo link para ativar a exclusão lá também. Se apagar os dados do site ou usar uma janela anônima, a preferência precisa ser ativada novamente.</p>
+  <a class="button" href="https://portfolio.estudioswim.com.br/">Voltar ao portfólio ↗</a>
+  <p class="fine">Use este link nos seus próprios aparelhos. Os acessos anteriores permanecem no histórico do Clarity.</p>
+  <noscript><p>Ative o JavaScript para salvar esta preferência.</p></noscript>
+</main>
+<script>
+  const saved = window.swimExclusionSaved;
+  document.getElementById('title').textContent = saved ? 'Este navegador está fora da medição.' : 'A exclusão não pôde ser salva.';
+  document.getElementById('summary').textContent = saved ? 'Você pode revisar os sites e os diagnósticos do portfólio sem registrar suas próximas visitas no Clarity.' : 'O navegador bloqueou o armazenamento da preferência. Permita os dados deste site e abra esta página novamente.';
+  document.getElementById('status').textContent = saved ? '✓ Exclusão ativada neste navegador' : 'Exclusão ainda não ativada';
+</script>
+</body>
+</html>
