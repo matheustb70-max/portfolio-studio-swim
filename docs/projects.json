@@ -103,5 +103,12 @@
     "category": "Diagnósticos",
     "cover": "assets/capa.webp",
     "updatedAt": "2026-11-18T02:31:12.514Z"
+  },
+  {
+    "slug": "ver-deise",
+    "title": "Clínica Dra. Deise Ferreira — Link de envio do diagnóstico",
+    "category": "Links de envio",
+    "cover": "",
+    "updatedAt": "2026-11-18T02:32:19.712Z"
   }
 ]
