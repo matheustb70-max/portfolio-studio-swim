@@ -124,5 +124,12 @@
     "category": "Diagnóstico",
     "cover": "assets/capa.webp",
     "updatedAt": "2026-11-18T02:35:09.105Z"
+  },
+  {
+    "slug": "ver-umnio",
+    "title": "Umnio — diagnóstico",
+    "category": "Diagnóstico",
+    "cover": "",
+    "updatedAt": "2026-11-18T02:36:17.907Z"
   }
 ]
