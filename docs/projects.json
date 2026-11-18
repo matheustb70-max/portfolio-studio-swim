@@ -117,5 +117,12 @@
     "category": "Diagnóstico",
     "cover": "assets/capa.webp",
     "updatedAt": "2026-11-18T02:34:14.976Z"
+  },
+  {
+    "slug": "diagnostico-comercial-umnio",
+    "title": "Diagnóstico Comercial — Umnio",
+    "category": "Diagnóstico",
+    "cover": "assets/capa.webp",
+    "updatedAt": "2026-11-18T02:35:09.105Z"
   }
 ]
