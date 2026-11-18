@@ -82,6 +82,18 @@
   addEventListener('scroll', () => { if(!ticking){ticking=true;requestAnimationFrame(updateScroll);} }, {passive:true});
   updateScroll();
 
+  // No celular, o contato flutuante não encobre o CTA da primeira dobra.
+  const redesignedHero = $('.hero-figma');
+  const floatingContact = $('.contact-float');
+  if (redesignedHero && floatingContact && 'IntersectionObserver' in window) {
+    const compactHero = matchMedia('(max-width:599px)');
+    let heroVisible = true;
+    const syncFloatingContact = () => floatingContact.classList.toggle('contact-float--hero-hidden', compactHero.matches && heroVisible);
+    new IntersectionObserver(entries => { heroVisible = entries[0].isIntersecting; syncFloatingContact(); }).observe(redesignedHero);
+    compactHero.addEventListener('change', syncFloatingContact);
+    syncFloatingContact();
+  }
+
   const images = [
     {src:'assets/recepcao.webp',alt:'Recepção real da KR Odontologia em Tubarão',caption:'Recepção da clínica'},
     {src:'assets/consultorio.webp',alt:'Consultório real da KR Odontologia, com cadeira odontológica e equipamentos',caption:'Consultório de atendimento'}

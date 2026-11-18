@@ -11,16 +11,17 @@
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="KR Odontologia — Um cuidado completo para sorrir com mais confiança.">
   <meta property="og:description" content="Desde 2012 em Tubarão. Diferentes especialidades e laboratório de prótese próprio para cuidar de você.">
-  <meta property="og:image" content="https://portfolio.estudioswim.com.br/kr-odontologia/assets/hero-equipe.webp">
+  <meta property="og:image" content="https://portfolio.estudioswim.com.br/kr-odontologia/assets/hero-atendimento-1920.webp">
   <meta property="og:url" content="https://portfolio.estudioswim.com.br/kr-odontologia/">
   <link rel="canonical" href="https://portfolio.estudioswim.com.br/kr-odontologia/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/britti-sans-regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="assets/fonts/britti-sans-semibold.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="assets/hero-equipe.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="assets/hero-atendimento-1920.webp" imagesrcset="assets/hero-atendimento-960.webp 960w, assets/hero-atendimento-1440.webp 1440w, assets/hero-atendimento-1920.webp 1920w, assets/hero-atendimento-2560.webp 2560w" imagesizes="(min-width: 768px) calc(100vw - 88px), calc(100vw - 32px)" as="image" fetchpriority="high">
   <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="hero.css">
   <link rel="stylesheet" href="portfolio.css">
   <link rel="stylesheet" href="assets/vendor/lenis-1.3.27.css">
   <script src="assets/vendor/lenis-1.3.27.min.js" defer></script>
@@ -63,21 +64,17 @@
   </header>
 
   <main id="conteudo">
-    <section class="hero outer" aria-labelledby="hero-title">
+    <section class="hero hero-figma outer" aria-labelledby="hero-title">
+      <picture class="hero-background">
+        <img src="assets/hero-atendimento-1920.webp" srcset="assets/hero-atendimento-960.webp 960w, assets/hero-atendimento-1440.webp 1440w, assets/hero-atendimento-1920.webp 1920w, assets/hero-atendimento-2560.webp 2560w" sizes="(min-width: 768px) calc(100vw - 88px), calc(100vw - 32px)" alt="Imagem ilustrativa de uma paciente sorrindo durante uma consulta odontológica" width="1920" height="1072" fetchpriority="high" decoding="async">
+      </picture>
       <div class="hero-copy">
         <p class="eyebrow"><span></span> ODONTOLOGIA INTEGRADA EM TUBARÃO, SC</p>
-        <h1 id="hero-title">Um cuidado completo para <em>sorrir com mais confiança.</em></h1>
+        <h1 id="hero-title" aria-label="Um cuidado completo para sorrir com mais confiança.">Um cuidado<span class="hero-title-space"> </span><br class="hero-title-break">completo para <em>sorrir<span class="hero-title-space"> </span><br class="hero-title-break">com mais confiança.</em></h1>
         <p class="hero-lead">Da reposição de um dente ao alinhamento do sorriso, cada tratamento precisa considerar você por inteiro.</p>
         <p class="hero-description">Na KR Odontologia, diferentes especialidades, tecnologia e laboratório de prótese próprio se encontram para cuidar da sua saúde bucal em um só lugar.</p>
         <div class="hero-actions"><a class="button" data-contact href="https://wa.me/5548996707779?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20KR%20Odontologia%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener noreferrer"><span>Agendar minha avaliação</span><span class="button-arrow"><svg aria-hidden="true"><use href="#i-diagonal"/></svg></span></a><a class="text-link" href="#tratamentos">Conhecer os tratamentos <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
       </div>
-      <div class="hero-visual">
-        <div class="hero-orbit" aria-hidden="true"></div>
-        <div class="hero-photo"><img src="assets/hero-equipe.webp" alt="Três integrantes da equipe real da KR Odontologia" width="1337" height="796" fetchpriority="high"></div>
-        <div class="hero-caption"><span class="caption-mark"><svg aria-hidden="true"><use href="#i-heart"/></svg></span><div>Diferentes especialidades.<br><strong>Um cuidado completo.</strong></div><span class="caption-location">TUBARÃO, SC<br>DESDE 2012</span></div>
-        <div class="hero-note"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>O seu cuidado tem lugar.<br><strong>Vila Moema · Tubarão</strong></span></div>
-      </div>
-      <a class="hero-scroll" href="#para-voce" aria-label="Conhecer o cuidado da KR"><svg class="hero-wave" aria-hidden="true" viewBox="0 0 280 44" preserveAspectRatio="none"><path d="M0 0C70 0 78 40 140 40S210 0 280 0Z"/></svg><svg class="hero-scroll-icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </section>
     <div class="trust-strip container" aria-label="Sobre a clínica"><span><svg aria-hidden="true"><use href="#i-clock"/></svg> Desde 2012 em Tubarão</span><span><svg aria-hidden="true"><use href="#i-people"/></svg> Diferentes especialidades</span><span><svg aria-hidden="true"><use href="#i-tooth"/></svg> Laboratório de prótese próprio</span></div>
 

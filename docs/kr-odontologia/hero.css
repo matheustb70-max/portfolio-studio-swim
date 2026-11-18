@@ -1,0 +1,141 @@
+/* Primeira dobra recriada pela referência visual do Figma, nó 309:3760.
+   Método visual autorizado por Matheus em 18/11/2026. */
+.hero.hero-figma{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:flex-start;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:0;
+  padding:192px 16px 24px;
+  border-radius:28px;
+  background:#eeedfc;
+}
+.hero-figma .hero-background{
+  display:block;
+  position:absolute;
+  inset:0 0 auto;
+  height:256px;
+  z-index:-1;
+  overflow:hidden;
+}
+.hero-figma .hero-background img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+  object-position:72% center;
+}
+.hero.hero-figma .hero-copy{
+  width:100%;
+  max-width:690px;
+  margin-inline:auto;
+  padding:32px 24px;
+  border:1px solid rgba(255,255,255,.78);
+  border-radius:24px;
+  background:rgba(238,237,252,.78);
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+  box-shadow:0 12px 28px rgba(33,31,55,.15);
+}
+.hero.hero-figma .eyebrow{
+  margin:0 0 24px;
+  color:#292a3d;
+  font-size:16px;
+  font-weight:400;
+  line-height:1.6;
+  letter-spacing:.06em;
+}
+.hero.hero-figma h1{
+  max-width:none;
+  margin:0;
+  font-size:40px;
+  font-weight:600;
+  line-height:1.08;
+  letter-spacing:-.01em;
+  text-wrap:balance;
+}
+.hero.hero-figma h1 em{
+  color:#635bdf;
+  font-style:normal;
+  font-weight:400;
+}
+.hero-title-break{display:none}
+.hero.hero-figma .hero-lead{
+  margin:28px 0 0;
+  max-width:560px;
+  color:#292a3d;
+  font-size:20px;
+  font-weight:400;
+  line-height:1.75;
+  text-wrap:pretty;
+}
+.hero.hero-figma .hero-description{
+  max-width:500px;
+  margin:20px 0 0;
+  color:#676777;
+  font-size:16px;
+  line-height:1.75;
+  text-wrap:pretty;
+}
+.hero.hero-figma .hero-actions{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:12px;
+  margin-top:28px;
+}
+.hero.hero-figma .hero-actions .button{font-size:18px;font-weight:400;flex-shrink:0;padding-block:7px;min-height:56px}
+.hero.hero-figma .hero-actions .text-link{font-size:16px;font-weight:400}
+.hero.hero-figma+.trust-strip{padding-top:40px}
+.contact-float.contact-float--hero-hidden{display:none}
+@media(max-width:599px){
+  .hero.hero-figma .hero-copy{display:flex;flex-direction:column;padding-block:28px}
+  .hero.hero-figma .eyebrow{order:0}
+  .hero.hero-figma h1{order:1}
+  .hero.hero-figma .hero-lead{order:2}
+  .hero.hero-figma .hero-actions{order:3}
+  .hero.hero-figma .hero-description{order:4;margin-top:24px}
+  .hero.hero-figma .hero-actions .button{padding-inline:16px 8px;gap:8px}
+  .hero.hero-figma .hero-actions .button-arrow{width:32px;height:32px}
+}
+@media(min-width:600px){
+  .hero.hero-figma{padding:320px 32px 40px}
+  .hero-figma .hero-background{height:400px}
+  .hero.hero-figma .hero-copy{padding:48px 40px}
+  .hero.hero-figma h1{font-size:56px}
+  .hero.hero-figma .hero-actions{flex-direction:row;flex-wrap:wrap;align-items:center;gap:20px}
+}
+@media(min-width:1200px){
+  .hero.hero-figma{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:flex-start;
+    min-height:824px;
+    padding:74px max(40px,calc((100% - 1440px) / 2 - var(--frame-gutter)));
+    border-radius:32px;
+    background:#eeedfc;
+  }
+  .hero-figma .hero-background{inset:0;height:100%}
+  .hero-figma .hero-background img{object-position:center center}
+  .hero.hero-figma .hero-copy{
+    width:690px;
+    max-width:100%;
+    flex:0 0 690px;
+    margin:0;
+    padding:64px 40px;
+    border-radius:32px;
+    background:rgba(238,237,252,.76);
+  }
+  .hero.hero-figma .eyebrow{margin-bottom:28px}
+  .hero.hero-figma h1{font-size:64px;line-height:1.08;text-wrap:initial}
+  .hero-title-break{display:block}
+  .hero-title-space{display:none}
+  .hero.hero-figma .hero-actions{flex-wrap:nowrap}
+  .hero.hero-figma+.trust-strip{padding-block:56px 40px}
+}
+@media(prefers-reduced-motion:reduce){.hero.hero-figma .hero-copy{animation:none}}
