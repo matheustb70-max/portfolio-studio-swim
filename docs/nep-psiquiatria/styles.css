@@ -45,3 +45,33 @@
 .gallery-bottom{min-height:61px}
 .map-address{flex:1;min-height:86px}
 @media(max-width:600px){.clinic-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Native scroll stacking stays inside the treatments list. */
+.treatment-list.is-stacking {
+  isolation:isolate;
+}
+.treatment-list.is-stacking::after {
+  content:'';
+  display:block;
+  flex:0 0 var(--stack-tail);
+}
+.treatment-list.is-stacking > .treatment-card {
+  position:sticky;
+  min-height:var(--stack-height,0px);
+  align-content:start;
+  top:calc(var(--stack-top) + var(--stack-index) * var(--stack-step));
+  z-index:calc(var(--stack-index) + 1);
+  scroll-margin-top:calc(var(--stack-top) + var(--stack-index) * var(--stack-step));
+}
+.js .treatment-list.is-stacking > .treatment-card.reveal {
+  opacity:1;
+  transform:none;
+  transition:none;
+}
+.treatment-list.is-stacking > .treatment-card:has(:focus-visible) {
+  z-index:calc(var(--stack-count) + 1);
+}
+@media(prefers-reduced-motion:reduce) {
+  .treatment-list.is-stacking::after {display:none}
+  .treatment-list.is-stacking > .treatment-card {position:relative;top:auto;min-height:0}
+}

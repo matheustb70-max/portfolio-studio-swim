@@ -41,6 +41,50 @@
     });
   });
 
+  const treatmentList = document.querySelector('.treatment-list');
+  if (treatmentList) {
+    const cards = [...treatmentList.querySelectorAll(':scope > .treatment-card')];
+    cards.forEach((card, index) => card.style.setProperty('--stack-index', index));
+    treatmentList.style.setProperty('--stack-count', cards.length);
+    let stackFrame = 0;
+    const updateTreatmentStack = () => {
+      stackFrame = 0;
+      const headerHeight = Math.ceil(header.getBoundingClientRect().height);
+      const step = window.matchMedia('(max-width: 600px)').matches ? 8 : 10;
+      const top = headerHeight + 18;
+      const availableHeight = window.innerHeight - top - step * (cards.length - 1) - 24;
+      const wasEnabled = treatmentList.classList.contains('is-stacking');
+      const focusedCard = cards.find(card => card.contains(document.activeElement));
+      const previousTop = focusedCard?.getBoundingClientRect().top;
+      treatmentList.style.removeProperty('--stack-height');
+      const heights = cards.map(card => card.getBoundingClientRect().height);
+      const fits = heights.every(height => height <= availableHeight);
+      const enabled = !reducedMotion.matches && cards.length > 1 && fits;
+      treatmentList.style.setProperty('--stack-top', `${top}px`);
+      treatmentList.style.setProperty('--stack-step', `${step}px`);
+      treatmentList.style.setProperty('--stack-height', `${Math.max(...heights)}px`);
+      treatmentList.style.setProperty('--stack-tail', `${Math.min(120, Math.max(72, innerHeight * .12))}px`);
+      treatmentList.classList.toggle('is-stacking', enabled);
+      // Keep an expanded card in view if it needs normal flow to fit its content.
+      if (wasEnabled !== enabled && focusedCard && previousTop >= headerHeight && previousTop < innerHeight) {
+        const difference = focusedCard.getBoundingClientRect().top - previousTop;
+        if (Math.abs(difference) > 1) window.scrollBy({top:difference, behavior:'instant'});
+      }
+    };
+    const scheduleTreatmentStack = () => {
+      if (!stackFrame) stackFrame = requestAnimationFrame(updateTreatmentStack);
+    };
+    const stackResize = new ResizeObserver(scheduleTreatmentStack);
+    cards.forEach(card => {
+      stackResize.observe(card);
+      stackResize.observe(card.querySelector('.accordion-panel'));
+    });
+    stackResize.observe(header);
+    window.addEventListener('resize', scheduleTreatmentStack, {passive:true});
+    reducedMotion.addEventListener('change', scheduleTreatmentStack);
+    updateTreatmentStack();
+  }
+
   document.querySelectorAll('.carousel').forEach(track => {
     const controls = document.querySelector(`[data-controls="${track.id}"]`);
     const dots = document.querySelector(`[data-dots="${track.id}"]`);
