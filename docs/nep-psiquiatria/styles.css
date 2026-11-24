@@ -78,3 +78,5 @@
 
 /* Section headings start directly with their title. */
 .section-heading h2,.sticky-intro h2{margin-top:0}
+
+.hero-description{font-size:24px}
